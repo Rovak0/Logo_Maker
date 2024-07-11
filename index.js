@@ -13,7 +13,7 @@ const questions = ['What 3 letters would you like in your logo?', 'What color wo
 
 //the write function
 function writeSvg(text) {
-    fs.writeFile('logo.html', text, (err) => {
+    fs.writeFile('./examples/logo.html', text, (err) => {
         err ? console.log(err) : console.log("working")
     })
 }
@@ -28,6 +28,7 @@ function svgGenerator(queryData) {
         case 'circle':
             return circle(shapeColor);
         case 'square':
+            console.log('square!!!');
             return square(shapeColor);
         case 'triangle':
             return triangle(shapeColor);
