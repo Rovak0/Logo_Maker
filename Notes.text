@@ -1,0 +1,16 @@
+Needs to read inputs (inquirer@8.2.4)
+Needs to turn color word/code into color
+Needs to make the file
+Needs to save and output the file
+Svg is set up as 
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+  <text x="30" y="50" fill="green">Hello!</text>
+</svg>
+cx is x offset (I belieive %)
+cy is y offset (from top)
+  50 centers the object
+Stroke is edge color
+  Stroke-width is edge size
+Fill is color fill
+
