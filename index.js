@@ -13,7 +13,7 @@ const questions = ['What 3 letters would you like in your logo?', 'What color wo
 
 //the write function
 function writeSvg(text) {
-    fs.writeFile('./examples/logo.html', text, (err) => {
+    fs.writeFile('logo.html', text, (err) => {
         err ? console.log(err) : console.log("working")
     })
 }
@@ -68,11 +68,11 @@ inquirer
         const logoShape = svgGenerator(response);
         console.log(logoShape);
         //make the text components
-        const logoText = `<text x=30 y=55 fill="${response.textColor}">${response.text}"</text>`;
+        const logoText = `<text x=30 y=55 fill="${response.textColor}">${response.text}</text>`;
         const svgLogo = `<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
         ${logoShape}
         ${logoText}
-        </svg>`;
+    </svg>`;
         writeSvg(svgLogo);
 
     })
