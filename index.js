@@ -2,8 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const circle = require('./lib/circle');
-const square = require('./lib/square');
-const triangle = require('./lib/triangle');
+const Square = require('./lib/square');
+const Triangle = require('./lib/triangle');
 
 
 //array of questions to be asked
@@ -24,14 +24,16 @@ function svgGenerator(queryData) {
     //not worried about text stuff
     const shape = queryData.shape;
     const shapeColor = queryData.shapeColor;
+    const text = queryData.text;
+    const textColor = queryData.textColor;
     switch(shape){
         case 'circle':
-            return circle(shapeColor);
+            return new circle(shapeColor, text, textColor);
         case 'square':
             console.log('square!!!');
-            return square(shapeColor);
+            return new Square(shapeColor, text, textColor);
         case 'triangle':
-            return triangle(shapeColor);
+            return new Triangle(shapeColor, text, textColor);
         default:
             break;
     }
@@ -65,14 +67,15 @@ inquirer
     ])
     .then(function(response){
         console.log(response);
-        const logoShape = svgGenerator(response);
+        const logoShape = svgGenerator(response); //this returns object
         console.log(logoShape);
         //make the text components
-        const logoText = `<text x=30 y=55 fill="${response.textColor}">${response.text}</text>`;
-        const svgLogo = `<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-        ${logoShape}
-        ${logoText}
-    </svg>`;
+    //     const logoText = `<text x=30 y=55 fill="${response.textColor}">${response.text}</text>`;
+    //     const svgLogo = `<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+    //     ${logoShape}
+    //     ${logoText}
+    // </svg>`;
+        const svgLogo = logoShape.createLogo();
         writeSvg(svgLogo);
 
     })
